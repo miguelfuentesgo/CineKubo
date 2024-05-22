@@ -1,5 +1,5 @@
 <template>
-    <header class="flex justify-around items-center text-red">
+    <header>
         <img src="@/assets/logo.jpeg" alt="logo" />
         <h1><span>Cine</span>Kubo</h1>
         <span></span>

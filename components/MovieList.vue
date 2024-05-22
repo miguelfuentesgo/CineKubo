@@ -1,10 +1,21 @@
 <template
 >
 
-<ul>
+<div class="movieList">
     <slot name="items" />
-</ul>
+</div>
 
 
 
 </template>
+
+
+<style scoped>
+
+.movieList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 25px;
+}
+</style>

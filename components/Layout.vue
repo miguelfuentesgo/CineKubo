@@ -20,4 +20,8 @@
   padding: 14px 0;
   box-sizing: border-box;
 }
+
+.content {
+    margin: 20px;
+}
 </style>
