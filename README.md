@@ -1,4 +1,7 @@
-# Nuxt 3 Minimal Starter
+# CINEKUBO
+
+Web application that searches for movies through a free api and then lists them in a responsive way.
+
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
