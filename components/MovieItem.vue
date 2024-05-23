@@ -2,7 +2,7 @@
     <div class="movieItem" >
         <Card class="card-movie" @click="changeModalVisibility">
             <template #header>
-                <img class="poster poster-list" alt="user header" :src="pathImage" />
+                <img class="poster poster-list" alt="Movie poster"  :src="pathImage"  />
             </template>
             <template #title> <span class="title-movie">{{props.movie.original_title}}</span></template>
             <template #subtitle><span class="date-movie">{{ props.movie.release_date}}</span></template>
@@ -31,22 +31,13 @@ const modalDetailVisible = ref(false);
 
 const changeModalVisibility = () => modalDetailVisible.value = !modalDetailVisible.value;
 
-const pathImage = computed(() => "https://image.tmdb.org/t/p/w500"+props.movie.poster_path);
+const pathImage = computed(function(){
+   return  String(props.movie.poster_path).endsWith('null') ? "../assets/logo.jpeg" :"https://image.tmdb.org/t/p/w500"+props.movie.poster_path
+});
 
 </script>
 
 <style scoped>
-    
-
-    .buttons {
-        display: flex;
-        gap: 3px;
-        margin-top: 10px;
-    }
-
-    .button {
-        width: 100%;
-    }
 
     .content {
         margin: 0;
@@ -84,6 +75,29 @@ const pathImage = computed(() => "https://image.tmdb.org/t/p/w500"+props.movie.p
 
     .date-movie {
         font-size: 10px;
+    }
+
+
+    @media (max-width: 540px) {
+        .card-movie{
+            width: 200px;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .title-movie, .date-movie {
+            display: none;
+        }
+
+        .poster-list {
+            transition: none;
+            object-fit: fill;
+        }
+        .poster-list:hover{
+            transform: none;
+        }
+
+
     }
 
     

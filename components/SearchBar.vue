@@ -1,9 +1,9 @@
 <template>
+    <Message :closable="false" severity="error" v-if="errorSearch">Please, enter a valid name</Message>
     <FloatLabel>
-        <InputIcon class="pi pi-search"> </InputIcon>
-        <InputText id="username"  v-model="inputSearch" />
-        <label for="username">Movie</label>
-        <Button label="Search"></Button>
+        <InputText id="movie"  v-model="inputSearch" />
+        <label for="movie">Movie</label>
+        <Button label="Search" @click="handleSearch"></Button>
     </FloatLabel>
 </template>
 
@@ -15,4 +15,19 @@ import IconField from 'primevue/iconfield';
 import InputIcon from 'primevue/inputicon';
 
 const inputSearch = ref("");
+const errorSearch = ref(false)
+
+const emit = defineEmits(['emitSearch'])
+const handleSearch = ()  => {
+    console.log('input search', inputSearch);
+    errorSearch.value = false;
+    if(inputSearch.value == ""){
+        console.log('input search', inputSearch);
+        errorSearch.value = true;
+    } else {
+        emit('emitSearch', inputSearch.value)
+
+    }
+   
+}
 </script>

@@ -17,5 +17,6 @@
     flex-wrap: wrap;
     gap: 20px;
     margin-top: 25px;
+    justify-content: center;
 }
 </style>

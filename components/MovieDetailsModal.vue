@@ -1,7 +1,7 @@
 <template>
     <Dialog v-model:visible="props.modalVisible" modal :style="{ width: '50rem' }" :header="props.movie.original_title">
         <div class="movie-details">
-            <img class="poster-detail" alt="user header" :src="pathImage"/>
+            <img class="poster-detail" alt="Movie poster" :src="pathImage"/>
             <div class="movie-info">
                 <p> {{props.movie.overview}}</p>
             <p> {{ props.movie.release_date}}</p>
