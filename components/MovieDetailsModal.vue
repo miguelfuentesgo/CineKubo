@@ -4,8 +4,8 @@
             <img class="poster-detail" alt="Movie poster" :src="pathImage"/>
             <div class="movie-info">
                 <p> {{props.movie.overview}}</p>
-            <p> {{ props.movie.release_date}}</p>
-            <p> {{ props.movie.vote_average}}</p>
+            <p> Realease date: {{ props.movie.release_date}}</p>
+            <p> Rating: {{ props.movie.vote_average}}</p>
             </div>
         </div>
       
@@ -42,7 +42,7 @@
 }
 
 .modal {
-    width: 200rem;
+    width: 100rem;
 }
 
 .movie-details {
@@ -52,6 +52,16 @@
 
 .movie-info {
     padding: 20px;
+}
+
+
+@media (max-width: 540px) {
+    .movie-details {
+        margin: 10px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 </style>

@@ -2,7 +2,11 @@
     <div class="movieItem" >
         <Card class="card-movie" @click="changeModalVisibility">
             <template #header>
-                <img class="poster poster-list" alt="Movie poster"  :src="pathImage"  />
+                <div v-if="!imageLoaded" class="container-spinner">
+                    <ProgressSpinner />
+                </div>
+                
+                <img class="poster poster-list" alt="Movie poster" ref="posterImage" @load="onLoad()" :src="pathImage"  />
             </template>
             <template #title> <span class="title-movie">{{props.movie.original_title}}</span></template>
             <template #subtitle><span class="date-movie">{{ props.movie.release_date}}</span></template>
@@ -31,8 +35,23 @@ const modalDetailVisible = ref(false);
 
 const changeModalVisibility = () => modalDetailVisible.value = !modalDetailVisible.value;
 
+const imageLoaded = ref(false);
+
 const pathImage = computed(function(){
    return  String(props.movie.poster_path).endsWith('null') ? "../assets/logo.jpeg" :"https://image.tmdb.org/t/p/w500"+props.movie.poster_path
+});
+
+const onLoad = () => {
+    console.log('Imagen cargada');
+    imageLoaded.value = true;
+}
+const posterImage = ref(null);
+onMounted(() => {
+    
+    if (posterImage.value && posterImage.value.complete) {
+        imageLoaded.value = true;
+      }
+  
 });
 
 </script>
@@ -97,7 +116,19 @@ const pathImage = computed(function(){
             transform: none;
         }
 
+        .container-spinner {
+            width: 200px !important;
+            height: 300px !important;
+        }
 
+    }
+
+    .container-spinner {
+        width: 150px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     

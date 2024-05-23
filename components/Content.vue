@@ -6,6 +6,7 @@
             <template #items>
                 <Loading v-if="pendingMovies"/>
                 <h1 v-show="errorMovies"> Error loading movies</h1>
+                <h1 v-if="movies.length == 0 && !pendingMovies"> Oops no movies at this time </h1>
                 <MovieItem v-show="!pendingMovies" v-for="movie in movies" :key="movie.id" :movie="movie"/>
 
                 

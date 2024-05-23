@@ -1,7 +1,7 @@
 <template>
     <Message :closable="false" severity="error" v-if="errorSearch">Please, enter a valid name</Message>
     <FloatLabel>
-        <InputText id="movie"  v-model="inputSearch" />
+        <InputText id="movie"  v-model="inputSearch" @keyup.enter="handleSearch" />
         <label for="movie">Movie</label>
         <Button label="Search" @click="handleSearch"></Button>
     </FloatLabel>
