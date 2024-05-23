@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-    'nuxt-primevue'
+    'nuxt-primevue',
 ],
   primevue: {
       /* Options */

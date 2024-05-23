@@ -1,12 +1,12 @@
 <template>
     <div class="content">
-        <SearchBar />
+        <SearchBar  />
         <MovieList >
     
             <template #items>
 
 
-                <MovieItem v-for="movie in results" :key="movie.id" :movie="movie"/>
+                <MovieItem v-for="movie in movies" :key="movie.id" :movie="movie"/>
                 
             </template>
         </MovieList>
@@ -15,16 +15,18 @@
 </template>
 
 <script setup>
+
+const movies = ref([])
 const  token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Y2Q2NTUwYjAxYzU5ZmY5Y2ExNDkwNGE5MTQxNTY3YyIsInN1YiI6IjY2NGUxMjM5NzgxYTZhNWY4YTE4OTFhMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BFbDb1UgrY1D_kdCqsFjUbDSV8CjJgW9gETz4ctGIP4';
 
 const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
-const { data } = await useFetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', {
-    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Y2Q2NTUwYjAxYzU5ZmY5Y2ExNDkwNGE5MTQxNTY3YyIsInN1YiI6IjY2NGUxMjM5NzgxYTZhNWY4YTE4OTFhMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BFbDb1UgrY1D_kdCqsFjUbDSV8CjJgW9gETz4ctGIP4'}
+
+const { data } = await useFetch(url, {
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+token}
 })
 
-const results = JSON.parse(JSON.stringify(data.value)).results;
+movies.value = JSON.parse(JSON.stringify(data.value)).results;
 
-console.log(results);
 
 
 

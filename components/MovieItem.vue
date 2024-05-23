@@ -77,10 +77,7 @@ const pathImage = computed(() => "https://image.tmdb.org/t/p/w500"+props.movie.p
         transform: scale(1.2);
     }
 
-    .poster-detail {
-        width: 150px;
-    }
-
+    
     .title-movie {
         font-size: 12px;
     }
@@ -89,16 +86,5 @@ const pathImage = computed(() => "https://image.tmdb.org/t/p/w500"+props.movie.p
         font-size: 10px;
     }
 
-    .modal {
-        width: 200rem;
-    }
-
-    .movie-details {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .movie-info {
-        padding: 20px;
-    }
+    
 </style>
